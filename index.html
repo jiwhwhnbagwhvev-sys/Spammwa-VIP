@@ -270,7 +270,6 @@ menuBox.style.display =
 menuBox.style.display=="block"?"none":"block";
 }
 
-// LOGIN
 function login(){
 
 let u = document.getElementById("user").value.trim();
@@ -281,12 +280,34 @@ notif.innerText = "Isi semua!";
 return;
 }
 
-// 🔐 VALIDASI KE DATABASE
+// VALIDASI USER
 let valid = akunList.find(a => a.user === u && a.pass === p);
 
 if(!valid){
 notif.innerText = "❌ Username / Password salah!";
 return;
+}
+
+// 🔒 CEK LOCK
+let savedDevice = localStorage.getItem("lock_"+u);
+
+// kalau ada tapi beda device → tolak
+if(savedDevice && savedDevice !== deviceId){
+notif.innerText = "❌ User aktif di perangkat lain!";
+return;
+}
+
+// 🔐 SIMPAN LOCK (AMAN)
+localStorage.setItem("lock_"+u, deviceId);
+
+// LOGIN
+localStorage.setItem("user", u);
+
+loginBox.style.display="none";
+panel.style.display="block";
+welcome.innerText="Halo, "+u;
+
+updateStatus();
 }
  
 // ✅ LOGIN BERHASIL
