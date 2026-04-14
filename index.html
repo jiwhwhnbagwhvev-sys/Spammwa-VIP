@@ -288,21 +288,7 @@ if(!valid){
 notif.innerText = "❌ Username / Password salah!";
 return;
 }
-
-// 🔒 CEK DEVICE
-let savedDevice = localStorage.getItem("lock_"+u);
-
-// kalau belum pernah login → simpan
-if(!savedDevice){
-  localStorage.setItem("lock_"+u, deviceId);
-}
-
-// kalau beda device → tolak
-else if(savedDevice !== deviceId){
-  notif.innerText = "❌ User aktif di perangkat lain!";
-  return;
-}
-  
+ 
 // ✅ LOGIN BERHASIL
 localStorage.setItem("user", u);
 
