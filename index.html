@@ -487,11 +487,15 @@ anim();
 // semua kode lo (login, anim, dll)
 
 // 🔊 AKTIFKAN SUARA SAAT KLIK
-document.addEventListener("click", function(){
+function toggleSound(){
   let vid = document.getElementById("bgVideo");
-  vid.muted = false;
-});
 
+  vid.muted = false;
+  vid.volume = 1;
+
+  vid.currentTime = 0; // mulai ulang biar ke-detect
+  vid.play();
+}
   let soundOn = false;
 
 function toggleSound(){
