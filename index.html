@@ -297,6 +297,9 @@ notif.innerText = "❌ User aktif di perangkat lain!";
 return;
 }
   
+// 🔐 SIMPAN DEVICE
+localStorage.setItem("lock_"+u, deviceId);
+  
 // ✅ LOGIN BERHASIL
 localStorage.setItem("user", u);
 
