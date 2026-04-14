@@ -185,7 +185,7 @@ Akun hanya bisa 1 perangkat! Logout dulu jika pindah device.
 </div>
  
 <h2>LOGIN MENU</h2>
-
+<button class="btn-led" onclick="toggleSound()">🔊 SUARA</button>
 <input id="user" placeholder="Username">
 <input id="pass" type="password" placeholder="Password">
 
@@ -491,6 +491,21 @@ document.addEventListener("click", function(){
   let vid = document.getElementById("bgVideo");
   vid.muted = false;
 });
+
+  let soundOn = false;
+
+function toggleSound(){
+  let vid = document.getElementById("bgVideo");
+
+  if(!soundOn){
+    vid.muted = false;
+    vid.play();
+    soundOn = true;
+  } else {
+    vid.muted = true;
+    soundOn = false;
+  }
+}
   
 </script>
 
