@@ -158,7 +158,7 @@ to{opacity:1;}
 </head>
 
 <body>
-<video loop playsinline id="bgVideo">
+<video autoplay muted loop playsinline id="bgVideo">
   <source src="anime.mp4" type="video/mp4">
 </video>
 
@@ -200,6 +200,9 @@ Akun hanya bisa 1 perangkat! Logout dulu jika pindah device.
 <div id="notif" class="error"></div>
 </div>
 
+<button onclick="login()">LOGIN</button>
+
+<button onclick="playVideo()">🔊 Aktifkan Suara</button>
 <!-- PANEL -->
 <div class="card" id="panel" style="display:none;">
 
@@ -479,6 +482,16 @@ requestAnimationFrame(anim);
 }
 anim();
 
+<script>
+
+// semua kode lo (login, anim, dll)
+
+// 🔊 AKTIFKAN SUARA SAAT KLIK
+document.addEventListener("click", function(){
+  let vid = document.getElementById("bgVideo");
+  vid.muted = false;
+});
+  
 </script>
 
 </body>
