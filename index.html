@@ -209,7 +209,72 @@ Akun hanya bisa 1 perangkat! Logout dulu jika pindah device.
 
 <div id="notif" class="error"></div>
 
-</div> <!-- 🔥 TUTUP LOGIN DI SINI -->
+</div>
+
+<!-- 🔥 PANEL -->
+<div class="card" id="panel" style="display:none;">
+
+<!-- SOSIAL MINI -->
+<div style="margin-top:10px; text-align:center;">
+  <a href="https://youtube.com/@pecinta-hpkentang?si=-SNF8F3Rmb8yvTjG" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="18">
+  </a>
+
+  <a href="https://whatsapp.com/channel/0029Vb7Ve1b3wtbCclABd11w" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="18">
+  </a>
+
+  <a href="https://www.tiktok.com/@pecintahpkentang?_r=1&_t=ZS-95X7sUO8vNH" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046126.png" width="18">
+  </a>
+</div>
+
+<!-- STATUS LED -->
+<div id="statusOnline" class="status-led"></div>
+
+<input id="target" placeholder="812xxxxxxx">
+<div id="errorNomor" class="error"></div>
+
+<div class="menu-led" onclick="pilihMenu('wa')">🔥 SPAM WA</div>
+<div class="menu-led" onclick="pilihMenu('call')">📞 SPAM CALL</div>
+
+<div style="margin-top:10px;">
+  <button class="btn-led" onclick="startSpam()">🔥 EKSEKUSI</button>
+</div>
+
+<div style="margin-top:15px;">
+  <button class="btn-led" onclick="stopSpam()">⛔ STOP</button>
+</div>
+
+<div id="status" class="status"></div>
+
+</div><!-- LOGIN -->
+<div class="card" id="loginBox">
+
+<div style="margin-bottom:15px;">
+  <img src="logo.png" style="width:120px;border-radius:10px;">
+</div>
+
+<h2>LOGIN MENU</h2>
+
+<input id="user" placeholder="Username">
+<input id="pass" type="password" placeholder="Password">
+
+<button onclick="login()">LOGIN</button>
+
+<button onclick="buyAkses()" style="background:#00c853;color:white;">💰 BUY AKSES</button>
+
+<button onclick="daftarAkun()" style="background:#333;color:white;">📝 DAFTAR AKUN</button>
+
+<div class="title-led">⚡ Pecinta HP Kentang ⚡</div>
+
+<div id="notif" class="error"></div>
+
+</div>
+
+<!-- 🔥 PANEL -->
+<div class="card" id="panel" style="display:none;">
+
 <!-- SOSIAL MINI -->
 <div style="margin-top:10px; text-align:center;">
   <a href="https://youtube.com/@pecinta-hpkentang?si=-SNF8F3Rmb8yvTjG" target="_blank">
