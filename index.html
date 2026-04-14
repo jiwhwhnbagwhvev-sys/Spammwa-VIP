@@ -36,6 +36,36 @@ position:relative;
 z-index:10;
 }
 
+/* 🔥 TAMBAH DI SINI */
+.login-title{
+font-size:26px;
+font-weight:bold;
+color:white;
+text-align:center;
+margin-bottom:10px;
+
+text-shadow:
+0 0 5px white,
+0 0 10px white,
+0 0 20px rgba(255,255,255,0.7);
+
+animation:glowText 1.5s infinite alternate;
+}
+
+@keyframes glowText{
+from{
+text-shadow:
+0 0 5px white,
+0 0 10px white;
+}
+to{
+text-shadow:
+0 0 10px white,
+0 0 20px white,
+0 0 30px rgba(255,255,255,0.9);
+}
+}
+  
 /* MENU */
 #menuBtn{
 position:fixed;top:15px;right:15px;
@@ -194,7 +224,7 @@ Akun hanya bisa 1 perangkat! Logout dulu jika pindah device.
   <img src="logo.png" style="width:120px;border-radius:10px;">
 </div>
  
-<h2>LOGIN MENU</h2>
+<h2 class="login-title">LOGIN MENU</h2>
 
 <input id="user" placeholder="Username">
 <input id="pass" type="password" placeholder="Password">
