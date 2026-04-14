@@ -493,10 +493,7 @@ function toggleSound(){
   vid.muted = false;
   vid.volume = 1;
 
-  // pause dulu biar reset
-  vid.pause();
-
-  // baru play lagi (ini penting)
+  vid.pause(); // reset
   vid.play().then(()=>{
     console.log("suara aktif 🔊");
   }).catch(err=>{
