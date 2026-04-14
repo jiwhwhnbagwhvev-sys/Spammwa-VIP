@@ -504,17 +504,16 @@ function toggleSound(){
   vid.muted = false;
   vid.volume = 1;
 
-  let playPromise = vid.play();
+  // pause dulu biar reset
+  vid.pause();
 
-  if(playPromise !== undefined){
-    playPromise.then(()=>{
-      console.log("suara aktif");
-    }).catch(err=>{
-      console.log("error play:", err);
-    });
-  }
+  // baru play lagi (ini penting)
+  vid.play().then(()=>{
+    console.log("suara aktif 🔊");
+  }).catch(err=>{
+    console.log("gagal play:", err);
+  });
 }
-  
 </script>
 
 </body>
