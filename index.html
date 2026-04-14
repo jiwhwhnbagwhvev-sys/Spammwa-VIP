@@ -6,9 +6,36 @@
 <title>Trapenden V6 FINAL LED STATUS</title>
 
 <style>
+video, canvas{
+pointer-events:none;
+}
 body{margin:0;font-family:'Segoe UI';background:black;color:white;overflow:hidden;}
-canvas{position:fixed;top:0;left:0;pointer-events:none;}
 
+#bgVideo{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-1;
+pointer-events:none; /* 🔥 BIAR GAK NUTUP KLIK */
+opacity:0.4;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+z-index:0;
+}
+
+.card{
+position:relative;
+z-index:10;
+}
+  
 /* MENU */
 #menuBtn{
 position:fixed;top:15px;right:15px;
@@ -143,6 +170,10 @@ to{opacity:1;}
 
 <body>
 
+<video autoplay muted loop playsinline id="bgVideo">
+  <source src="https://files.catbox.moe/4n8l7r.mp4">
+</video>
+  
 <canvas id="particles"></canvas>
 
 <!-- MENU -->
