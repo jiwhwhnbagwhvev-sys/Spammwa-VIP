@@ -497,13 +497,17 @@ document.addEventListener("click", function(){
 function toggleSound(){
   let vid = document.getElementById("bgVideo");
 
-  if(!soundOn){
-    vid.muted = false;
-    vid.play();
-    soundOn = true;
-  } else {
-    vid.muted = true;
-    soundOn = false;
+  vid.muted = false;
+  vid.volume = 1;
+
+  let playPromise = vid.play();
+
+  if(playPromise !== undefined){
+    playPromise.then(()=>{
+      console.log("suara aktif");
+    }).catch(err=>{
+      console.log("error play:", err);
+    });
   }
 }
   
