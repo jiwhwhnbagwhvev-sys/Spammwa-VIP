@@ -484,21 +484,21 @@ anim();
 
 <script>
 
-// semua kode lo (login, anim, dll)
-
 // 🔊 AKTIFKAN SUARA SAAT KLIK
+<body>
+
+<video ...></video>
+
+<audio id="bgMusic" loop>
+  <source src="https://files.catbox.moe/4n8l7r.mp3">
+</audio>
+
+<button onclick="toggleSound()">🔊 SUARA</button>
+
+<script>
 function toggleSound(){
-  let vid = document.getElementById("bgVideo");
-
-  vid.muted = false;
-  vid.volume = 1;
-
-  vid.pause(); // reset
-  vid.play().then(()=>{
-    console.log("suara aktif 🔊");
-  }).catch(err=>{
-    console.log("gagal play:", err);
-  });
+  let audio = document.getElementById("bgMusic");
+  audio.play();
 }
 </script>
 
