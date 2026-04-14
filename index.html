@@ -15,16 +15,7 @@ pointer-events:none;
 z-index:1;
 }
   
-#bgVideo{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-object-fit:cover;
-z-index:0;
-}
-  
+
 /* MENU */
 #menuBtn{
 position:fixed;top:15px;right:15px;
@@ -33,6 +24,17 @@ z-index:999;cursor:pointer;
 text-shadow:0 0 10px #00aaff;
 }
 
+#bgVideo{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-1; /* WAJIB */
+pointer-events:none; /* INI KUNCI 🔥 */
+} 
+  
 #menuBox{
 position:fixed;top:60px;right:15px;
 background:#111;padding:12px;
