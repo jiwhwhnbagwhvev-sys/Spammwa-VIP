@@ -6,9 +6,15 @@
 <title>Trapenden V6 FINAL LED STATUS</title>
 
 <style>
-body{margin:0;font-family:'Segoe UI';background:black;color:white;overflow:hidden;}
-canvas{position:fixed;top:0;left:0;pointer-events:none;}
+<body>
 
+<!-- VIDEO BACKGROUND -->
+<video autoplay muted loop playsinline id="bgVideo">
+  <source src="anime.mp4" type="video/mp4">
+</video>
+
+<canvas id="particles"></canvas>
+  
 /* MENU */
 #menuBtn{
 position:fixed;top:15px;right:15px;
