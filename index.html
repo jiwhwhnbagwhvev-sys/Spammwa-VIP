@@ -227,25 +227,26 @@ Akun hanya bisa 1 perangkat! Logout dulu jika pindah device.
 </a>
 
 </div>
-  
+
 <!-- STATUS LED -->
 <div id="statusOnline" class="status-led"></div>
 
 <input id="target" placeholder="812xxxxxxx">
 <div id="errorNomor" class="error"></div>
 
-<div class="menu-led" id="menuWA" onclick="pilihMenu('wa')">🔥 SPAM WA</div>
-<div class="menu-led" id="menuCALL" onclick="pilihMenu('call')">📞 SPAM CALL</div>
+<div class="menu-led" onclick="pilihMenu('wa')">🔥 SPAM WA</div>
+<div class="menu-led" onclick="pilihMenu('call')">📞 SPAM CALL</div>
 
 <div style="margin-top:10px;">
-<button class="btn-led" id="btnRun" onclick="startSpam()">🔥 EKSEKUSI</button>
+  <button class="btn-led" onclick="startSpam()">🔥 EKSEKUSI</button>
 </div>
 
 <div style="margin-top:15px;">
-<button class="btn-led" id="btnStop" onclick="stopSpam()">⛔ STOP</button>
+  <button class="btn-led" onclick="stopSpam()">⛔ STOP</button>
 </div>
 
 <div id="status" class="status"></div>
+
 </div>
 
 <script>
