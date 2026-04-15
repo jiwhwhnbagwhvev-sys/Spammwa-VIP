@@ -203,23 +203,21 @@ video {
 </head>
 
 <body>
-<!-- 🎧 AUDIO PLAYER -->
-<audio id="bgMusic" controls loop style="width:100%; margin-top:10px;"></audio>
-
-<!-- 📜 PLAYLIST -->
-<div style="margin-top:10px;">
-  <button onclick="playSong('https://raw.githubusercontent.com/jiwhwhnbagwhvev-sys/Spammwa-VIP/main/music.mp3')">
-    🎵 Lagu 1
-  </button>
-
-  <button onclick="playSong('https://raw.githubusercontent.com/jiwhwhnbagwhvev-sys/Spammwa-VIP/main/anime.mp3')">
-    🎵 Lagu 2
-  </button>
-
-  <button onclick="playSong('https://raw.githubusercontent.com/jiwhwhnbagwhvev-sys/Spammwa-VIP/main/music2.mp3')">
-    🎵 Lagu 3
-  </button>
-</div>
+<audio id="bgMusic" controls loop>
+  <source src="https://raw.githubusercontent.com/jiwhwhnbagwhvev-sys/Spammwa-VIP/main/music.mp3" type="audio/mp3">
+</audio>
+<!-- 🔊 TOMBOL MUSIC -->
+<button onclick="playMusic()" 
+style="
+margin-top:10px;
+padding:10px;
+background:black;
+color:red;
+border:2px solid red;
+border-radius:10px;
+">
+🔊 PLAY MUSIC
+  
 <!--VIDEO BACKGROUND -->
 <video autoplay muted loop playsinline id="bgVideo">
   <source src="https://raw.githubusercontent.com/jiwhwhnbagwhvev-sys/Spammwa-VIP/main/anime.mp4" type="video/mp4">
@@ -241,17 +239,6 @@ Akun hanya bisa 1 perangkat! Logout dulu jika pindah device.
 <div class="card" id="loginBox">
 </div>
 
-<!-- 🔊 TOMBOL MUSIC -->
-<button onclick="playMusic()" 
-style="
-margin-top:10px;
-padding:10px;
-background:black;
-color:red;
-border:2px solid red;
-border-radius:10px;
-">
-🔊 PLAY MUSIC
 </button>
 <div style="margin-bottom:15px;">
   <img src="logo.png" style="width:120px;border-radius:10px;">
