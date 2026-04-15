@@ -195,13 +195,21 @@ box-shadow:0 0 10px red,0 0 25px red;
 from{opacity:0.6;}
 to{opacity:1;}
 }
+/* PINDAH KE DALAM STYLE */
+video {
+  pointer-events: none;
+}
 </style>
 </head>
 
 <body>
-<audio id="bgMusic" loop playsinline>
+<audio id="bgMusic" loop muted playsinline>
   <source src="https://cdn.jsdelivr.net/gh/jiwhwhnbagwhvev-sys/Spammwa-VIP/music.mp3" type="audio/mp3">
 </audio>
+
+<button onclick="m=document.getElementById('bgMusic');m.muted=false;m.volume=1;m.play();">
+PLAY
+</button>
   
 <!-- VIDEO BACKGROUND -->
 <video autoplay muted loop playsinline id="bgVideo">
