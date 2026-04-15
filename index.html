@@ -203,24 +203,23 @@ video {
 </head>
 
 <body>
-<audio id="bgMusic" loop playsinline>
-  <source src="https://cdn.jsdelivr.net/gh/jiwhwhnbagwhvev-sys/Spammwa-VIP/music.mp3" type="audio/mp3">
-</audio>
-<button onclick="playMusic()" 
-style="
-position:fixed;
-top:20px;
-left:20px;
-z-index:9999;
-padding:10px;
-background:black;
-color:red;
-border:2px solid red;
-border-radius:10px;
-">
-🔊 PLAY
-</button>
-  
+<!-- 🎧 AUDIO PLAYER -->
+<audio id="bgMusic" controls loop style="width:100%; margin-top:10px;"></audio>
+
+<!-- 📜 PLAYLIST -->
+<div style="margin-top:10px;">
+  <button onclick="playSong('https://raw.githubusercontent.com/jiwhwhnbagwhvev-sys/Spammwa-VIP/main/music.mp3')">
+    🎵 Lagu 1
+  </button>
+
+  <button onclick="playSong('https://raw.githubusercontent.com/jiwhwhnbagwhvev-sys/Spammwa-VIP/main/anime.mp3')">
+    🎵 Lagu 2
+  </button>
+
+  <button onclick="playSong('https://raw.githubusercontent.com/jiwhwhnbagwhvev-sys/Spammwa-VIP/main/music2.mp3')">
+    🎵 Lagu 3
+  </button>
+</div>
 <!--VIDEO BACKGROUND -->
 <video autoplay muted loop playsinline id="bgVideo">
   <source src="https://raw.githubusercontent.com/jiwhwhnbagwhvev-sys/Spammwa-VIP/main/anime.mp4" type="video/mp4">
@@ -240,7 +239,20 @@ Akun hanya bisa 1 perangkat! Logout dulu jika pindah device.
 
 <!-- LOGIN -->
 <div class="card" id="loginBox">
+</div>
 
+<!-- 🔊 TOMBOL MUSIC -->
+<button onclick="playMusic()" 
+style="
+margin-top:10px;
+padding:10px;
+background:black;
+color:red;
+border:2px solid red;
+border-radius:10px;
+">
+🔊 PLAY MUSIC
+</button>
 <div style="margin-bottom:15px;">
   <img src="logo.png" style="width:120px;border-radius:10px;">
 </div>
@@ -306,16 +318,21 @@ Akun hanya bisa 1 perangkat! Logout dulu jika pindah device.
 </div>
 
 <script>
-
-  function playMusic(){
+function playMusic(){
   let music = document.getElementById("bgMusic");
 
   if(music){
     music.muted = false;
     music.volume = 1;
-    music.play();
+
+    music.play().then(()=>{
+      console.log("✅ musik jalan");
+    }).catch(err=>{
+      console.log("❌ error:", err);
+      alert("Musik gak bisa diputar");
+    });
   }
- }
+}
 
 // 🔐 DATABASE AKUN (WAJIB LOGIN DARI SINI)
 const akunList = [
