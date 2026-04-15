@@ -531,30 +531,24 @@ status.className="status stop";
 status.style.display="block";
 status.innerHTML="⛔ Dihentikan!";
 
-// 🔥 ambil nomor
+// ambil nomor
 let nomor = document.getElementById("target").value;
 
 if(nomor==""){
   nomor="(tanpa nomor)";
 }
 
-// 🔥 pesan
+// pesan
 let pesan = "wa bot || spamm engine stopp | " + nomor;
 
 let tujuan = "6281385998324";
 
-// buka WA
-let waApp = "whatsapp://send?phone="+tujuan+"&text="+encodeURIComponent(pesan);
 let waWeb = "https://wa.me/"+tujuan+"?text="+encodeURIComponent(pesan);
 
-window.location.href = waApp;
+// 🔥 langsung buka WA
+window.open(waWeb, "_blank");
 
-setTimeout(()=>{
-  window.open(waWeb, "_blank");
-},1500);
-
-} // ✅ tutup di SINI
-
+}
 // PARTICLE
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
