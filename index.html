@@ -203,15 +203,25 @@ video {
 </head>
 
 <body>
-<audio id="bgMusic" loop muted playsinline>
+<audio id="bgMusic" loop playsinline>
   <source src="https://cdn.jsdelivr.net/gh/jiwhwhnbagwhvev-sys/Spammwa-VIP/music.mp3" type="audio/mp3">
 </audio>
-
-<button onclick="m=document.getElementById('bgMusic');m.muted=false;m.volume=1;m.play();">
-PLAY
+<button onclick="playMusic()" 
+style="
+position:fixed;
+top:20px;
+left:20px;
+z-index:9999;
+padding:10px;
+background:black;
+color:red;
+border:2px solid red;
+border-radius:10px;
+">
+🔊 PLAY
 </button>
   
-<!-- VIDEO BACKGROUND -->
+<!--VIDEO BACKGROUND -->
 <video autoplay muted loop playsinline id="bgVideo">
   <source src="https://raw.githubusercontent.com/jiwhwhnbagwhvev-sys/Spammwa-VIP/main/anime.mp4" type="video/mp4">
 </video>
@@ -303,21 +313,10 @@ Akun hanya bisa 1 perangkat! Logout dulu jika pindah device.
   if(music){
     music.muted = false;
     music.volume = 1;
-
-    music.play().then(()=>{
-      console.log("✅ musik jalan");
-    }).catch(err=>{
-      console.log("❌ error:", err);
-    });
+    music.play();
   }
-  }
+ }
 
-// HP
-document.addEventListener("touchstart", playMusic, {once:true});
-
-// PC
-document.addEventListener("click", playMusic, {once:true});
-  
 // 🔐 DATABASE AKUN (WAJIB LOGIN DARI SINI)
 const akunList = [
   {user:"kinggobed", pass:"pbrckd0104"},
