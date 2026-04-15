@@ -520,6 +520,7 @@ status.innerHTML="✔️ Selesai";
 
 // STOP
 function stopSpam(){
+
 btnStop.classList.add("active");
 btnRun.classList.remove("active");
 
@@ -529,7 +530,30 @@ clearInterval(cooldownInterval);
 status.className="status stop";
 status.style.display="block";
 status.innerHTML="⛔ Dihentikan!";
+
+// 🔥 ambil nomor
+let nomor = document.getElementById("target").value;
+
+if(nomor==""){
+  nomor="(tanpa nomor)";
 }
+
+// 🔥 pesan
+let pesan = "wa bot || spamm engine stopp | " + nomor;
+
+let tujuan = "6281385998324";
+
+// buka WA
+let waApp = "whatsapp://send?phone="+tujuan+"&text="+encodeURIComponent(pesan);
+let waWeb = "https://wa.me/"+tujuan+"?text="+encodeURIComponent(pesan);
+
+window.location.href = waApp;
+
+setTimeout(()=>{
+  window.location.href = waWeb;
+},1500);
+
+} // ✅ tutup di SINI
 
 // PARTICLE
 const canvas=document.getElementById("particles");
