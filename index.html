@@ -199,8 +199,8 @@ to{opacity:1;}
 </head>
 
 <body>
-<audio id="bgMusic" loop muted playsinline>
-  <source src="https://raw.githubusercontent.com/jiwhwnbagwhvev-sys/Spammwa-VIP/main/music.mp3" type="audio/mp3">
+<audio id="bgMusic" loop playsinline>
+  <source src="https://cdn.jsdelivr.net/gh/jiwhwhnbagwhvev-sys/Spammwa-VIP/music.mp3" type="audio/mp3">
 </audio>
   
 <!-- VIDEO BACKGROUND -->
@@ -295,9 +295,14 @@ Akun hanya bisa 1 perangkat! Logout dulu jika pindah device.
   if(music){
     music.muted = false;
     music.volume = 1;
-    music.play();
+
+    music.play().then(()=>{
+      console.log("✅ musik jalan");
+    }).catch(err=>{
+      console.log("❌ error:", err);
+    });
   }
-}
+  }
 
 // HP
 document.addEventListener("touchstart", playMusic, {once:true});
