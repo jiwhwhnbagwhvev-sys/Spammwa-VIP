@@ -199,8 +199,8 @@ to{opacity:1;}
 </head>
 
 <body>
-<audio id="bgMusic" autoplay loop>
-  <source src="https://raw.githubusercontent.com/USERNAME/REPO/main/lagu.mp3" type="audio/mp3">
+<audio id="bgMusic" autoplay loop muted>
+  <source src="https://raw.githubusercontent.com/jiwhwnbagwhvev-sys/Spammwa-VIP/main/lagu.mp3" type="audio/mp3">
 </audio>
   
 <!-- VIDEO BACKGROUND -->
@@ -288,7 +288,22 @@ Akun hanya bisa 1 perangkat! Logout dulu jika pindah device.
 </div>
 
 <script>
- 
+  document.addEventListener("touchstart", function(){
+  let music = document.getElementById("bgMusic");
+
+  music.muted = false;
+  music.play();
+
+}, {once:true});
+  
+ document.addEventListener("click", function(){
+  let music = document.getElementById("bgMusic");
+
+  music.muted = false;
+  music.play();
+
+}, {once:true});
+  
 // 🔐 DATABASE AKUN (WAJIB LOGIN DARI SINI)
 const akunList = [
   {user:"kinggobed", pass:"pbrckd0104"},
