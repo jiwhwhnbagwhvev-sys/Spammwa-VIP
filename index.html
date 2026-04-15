@@ -199,7 +199,64 @@ to{opacity:1;}
 </head>
 
 <body>
+<!-- AUDIO (WAJIB ADA) -->
+<audio id="bgMusic"></audio>
+<script>
+let music;
+let isPlaying = false;
 
+window.onload = function(){
+  music = document.getElementById("bgMusic");
+}
+
+function toggleMusic(){
+  if(!music.src){
+    music.src = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+    document.getElementById("songTitle").innerText = "Renegade";
+  }
+
+  if(!isPlaying){
+    music.play();
+    isPlaying = true;
+
+    document.getElementById("status").innerText = "ON";
+    document.getElementById("status").className = "on";
+  }else{
+    music.pause();
+    isPlaying = false;
+
+    document.getElementById("status").innerText = "OFF";
+    document.getElementById("status").className = "off";
+  }
+}
+
+function playSong(src, title){
+  music.src = src;
+  music.play();
+  isPlaying = true;
+
+  document.getElementById("songTitle").innerText = title;
+  document.getElementById("status").innerText = "ON";
+  document.getElementById("status").className = "on";
+}
+
+function toggleList(){
+  document.getElementById("playlist").classList.toggle("hidden");
+}
+
+function addSong(){
+  let url = prompt("Link lagu:");
+  let name = prompt("Nama lagu:");
+
+  if(url && name){
+    let div = document.createElement("div");
+    div.innerText = "🎵 " + name;
+    div.onclick = ()=>playSong(url, name);
+
+    document.getElementById("playlist").prepend(div);
+  }
+}
+</script>
 <!-- VIDEO BACKGROUND -->
 <video autoplay muted loop playsinline id="bgVideo">
   <source src="https://raw.githubusercontent.com/jiwhwhnbagwhvev-sys/Spammwa-VIP/main/anime.mp4" type="video/mp4">
@@ -225,7 +282,31 @@ Akun hanya bisa 1 perangkat! Logout dulu jika pindah device.
 </div>
  
 <h2 class="login-title">LOGIN MENU</h2>
+<!-- 🎵 MUSIC PLAYER -->
+<div class="music-box">
 
+  <div class="player-bar">
+
+    <button class="play-btn" onclick="toggleMusic()">▶</button>
+
+    <div class="info">
+      <div id="songTitle">Contigo Siempre</div>
+      <div id="status" class="off">OFF</div>
+    </div>
+
+    <button class="menu-btn" onclick="toggleList()">⋮</button>
+
+  </div>
+
+  <div id="playlist" class="playlist hidden">
+    <div onclick="playSong('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3','Renegade')">🎵 Renegade</div>
+    <div onclick="playSong('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3','Timeless')">🎵 Timeless</div>
+    <div onclick="playSong('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3','Funk Mi Camino')">🎵 Funk</div>
+
+    <button class="add-btn" onclick="addSong()">+ Tambah Lagu</button>
+  </div>
+
+</div>
 <input id="user" placeholder="Username">
 <input id="pass" type="password" placeholder="Password">
 
