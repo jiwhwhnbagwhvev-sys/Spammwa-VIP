@@ -497,12 +497,12 @@ window.location.href=waApp;
 setTimeout(()=>{window.location.href=waWeb;},1500);
 
 // cooldown
-let cd=300;
+let cd=500;
 cooldownInterval=setInterval(()=>{
 cd--;
 
-let m=Math.floor(cd/60);
-let s=cd%60;
+let m=Math.floor(cd/500);
+let s=cd%500;
 
 document.getElementById("cd").innerText=
 (m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
