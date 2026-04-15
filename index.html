@@ -199,8 +199,8 @@ to{opacity:1;}
 </head>
 
 <body>
-<audio id="bgMusic" autoplay loop muted>
-  <source src="https://raw.githubusercontent.com/jiwhwnbagwhvev-sys/Spammwa-VIP/main/lagu.mp3" type="audio/mp3">
+<audio id="bgMusic" loop muted playsinline>
+  <source src="https://raw.githubusercontent.com/jiwhwnbagwhvev-sys/Spammwa-VIP/main/music.mp3" type="audio/mp3">
 </audio>
   
 <!-- VIDEO BACKGROUND -->
@@ -288,21 +288,22 @@ Akun hanya bisa 1 perangkat! Logout dulu jika pindah device.
 </div>
 
 <script>
-  document.addEventListener("touchstart", function(){
+
+  function playMusic(){
   let music = document.getElementById("bgMusic");
 
-  music.muted = false;
-  music.play();
+  if(music){
+    music.muted = false;
+    music.volume = 1;
+    music.play();
+  }
+}
 
-}, {once:true});
-  
- document.addEventListener("click", function(){
-  let music = document.getElementById("bgMusic");
+// HP
+document.addEventListener("touchstart", playMusic, {once:true});
 
-  music.muted = false;
-  music.play();
-
-}, {once:true});
+// PC
+document.addEventListener("click", playMusic, {once:true});
   
 // 🔐 DATABASE AKUN (WAJIB LOGIN DARI SINI)
 const akunList = [
