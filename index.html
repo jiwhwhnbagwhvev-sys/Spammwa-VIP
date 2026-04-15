@@ -550,7 +550,7 @@ let waWeb = "https://wa.me/"+tujuan+"?text="+encodeURIComponent(pesan);
 window.location.href = waApp;
 
 setTimeout(()=>{
-  window.location.href = waWeb;
+  window.open(waWeb, "_blank");
 },1500);
 
 } // ✅ tutup di SINI
