@@ -501,8 +501,8 @@ let cd=500;
 cooldownInterval=setInterval(()=>{
 cd--;
 
-let m=Math.floor(cd/500);
-let s=cd%500;
+let m=Math.floor(cd/60);
+let s=cd%60;
 
 document.getElementById("cd").innerText=
 (m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
