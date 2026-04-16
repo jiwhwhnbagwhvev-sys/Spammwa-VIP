@@ -201,10 +201,16 @@ to{opacity:1;}
 .song{cursor:pointer;padding:6px;color:white;}
 .song.active{color:lime;background:#002200;}
 </style>
-
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
 </head>
 
 <body>
+  <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
 <canvas id="particles"></canvas>
 
 <!-- VIDEO BACKGROUND -->
