@@ -1,55 +1,77 @@
-const { default: makeWASocket, useMultiFileAuthState, fetchLatestBaileysVersion } = require("@whiskeysockets/baileys");
+const { default: makeWASocket, useMultiFileAuthState, fetchLatestBaileysVersion, DisconnectReason } = require("@whiskeysockets/baileys");
 const P = require("pino");
-const axios = require("axios");
-const readline = require("readline");
 
-async function startBot(){
-  const { state, saveCreds } = await useMultiFileAuthState("session");
+async function startBot() {
+  const { state, saveCreds } = await useMultiFileAuthState("./session");
+
   const { version } = await fetchLatestBaileysVersion();
 
   const sock = makeWASocket({
     version,
     logger: P({ level: "silent" }),
-    auth: state
+    auth: state,
+    browser: ["Termux Bot", "Chrome", "1.0.0"]
   });
 
+  // ✅ Simpan session
   sock.ev.on("creds.update", saveCreds);
 
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
+  // ✅ Koneksi & reconnect
+  sock.ev.on("connection.update", (update) => {
+    const { connection, lastDisconnect } = update;
 
-  rl.question("Masukkan nomor (628xxx): ", async (nomor)=>{
-    try{
-      const code = await sock.requestPairingCode(nomor);
-      console.log("🔑 KODE:", code);
-    }catch(e){
-      console.log("❌ Gagal ambil kode");
+    if (connection === "close") {
+      const reason = lastDisconnect?.error?.output?.statusCode;
+
+      console.log("❌ Koneksi putus:", reason);
+
+      if (reason !== DisconnectReason.loggedOut) {
+        console.log("🔄 Reconnect...");
+        startBot();
+      } else {
+        console.log("⚠️ Harus login ulang");
+      }
+    }
+
+    if (connection === "open") {
+      console.log("✅ Bot terhubung ke WhatsApp");
     }
   });
 
-  sock.ev.on("connection.update", async (update)=>{
-    const { connection } = update;
+  // ✅ Pairing Code (bukan QR)
+  if (!sock.authState.creds.registered) {
+    const phoneNumber = await askNumber();
+    const code = await sock.requestPairingCode(phoneNumber);
+    console.log("\n🔑 Kode Pairing:", code);
+  }
 
-    if(connection === "open"){
-      console.log("🟢 CONNECTED");
+  // ✅ Listener pesan (contoh)
+  sock.ev.on("messages.upsert", async ({ messages }) => {
+    const msg = messages[0];
+    if (!msg.message) return;
 
-      await axios.post("http://localhost:3000/status",{
-        status:"online"
-      });
-    }
+    const text = msg.message.conversation || msg.message.extendedTextMessage?.text;
 
-    if(connection === "close"){
-      console.log("🔴 DISCONNECT");
-
-      await axios.post("http://localhost:3000/status",{
-        status:"offline"
-      });
-
-      startBot();
+    if (text === "ping") {
+      await sock.sendMessage(msg.key.remoteJid, { text: "pong 🏓" });
     }
   });
 }
 
+// 📱 Input nomor
+function askNumber() {
+  return new Promise((resolve) => {
+    const readline = require("readline").createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+
+    readline.question("📱 Masukkan nomor (contoh 628xxx): ", (num) => {
+      readline.close();
+      resolve(num);
+    });
+  });
+}
+
+// 🚀 Jalankan bot
 startBot();
