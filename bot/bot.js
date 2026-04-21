@@ -26,20 +26,33 @@ async function startBot() {
   });
 }
 
-async function sendMessage(targets, txtUrl) {
+async function sendMessage(targets, url) {
   try {
-    const res = await axios.get(txtUrl);
+    console.log("📥 Ambil TXT...");
+
+    const res = await axios.get(url);
     const text = res.data;
 
-    for (let t of targets) {
-      await sock.sendMessage(t, { text });
-      console.log("Kirim ke:", t);
+    console.log("✅ TXT KEAMBIL");
 
-      await new Promise(r => setTimeout(r, 2000));
+    for (let t of targets) {
+      t = t.trim();
+      if (!t) continue;
+
+      // 🔥 pecah biar FULL ke kirim
+      const parts = text.match(/.{1,3000}/gs);
+
+      for (let part of parts) {
+        await sock.sendMessage(t, { text: part });
+
+        console.log("📤 Kirim ke:", t);
+
+        await new Promise(r => setTimeout(r, 1200));
+      }
     }
 
-  } catch (e) {
-    console.log("Error:", e.message);
+  } catch (err) {
+    console.log("❌ ERROR:", err.message);
   }
 }
 
