@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WA Sender</title>
+<style>
+body { background:#111; color:white; font-family:monospace; padding:20px }
+input,button { width:100%; padding:10px; margin:10px 0 }
+button { background:red; color:white }
+</style>
+</head>
+<body>
+
+<h2>🔥 WA TXT Sender 🔥</h2>
+
+<input id="targets" placeholder="628xxx@s.whatsapp.net,628xxx@s.whatsapp.net">
+<input id="url" placeholder="https://raw.githubusercontent.com/.../auahh.txt">
+
+<button onclick="send()">KIRIM</button>
+
+<script>
+async function send(){
+  const targets = document.getElementById("targets").value.split(",");
+  const url = document.getElementById("url").value;
+
+  await fetch("http://localhost:3000/send", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({ targets, url })
+  });
+
+  alert("Selesai");
+}
+</script>
+
+</body>
+</html>
