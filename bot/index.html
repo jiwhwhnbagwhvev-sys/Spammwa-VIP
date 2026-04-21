@@ -1,34 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<title>WA Sender</title>
+<meta charset="UTF-8">
+<title>HP Kentang VIP</title>
+
 <style>
-body { background:#111; color:white; font-family:monospace; padding:20px }
-input,button { width:100%; padding:10px; margin:10px 0 }
-button { background:red; color:white }
+body {
+  background: linear-gradient(135deg,#0a0000,#2b0000);
+  color: white;
+  font-family: monospace;
+  padding: 20px;
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+  background: #110000;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px red;
+}
+
+h2 {
+  text-align: center;
+  color: red;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background: black;
+  color: red;
+  border: 1px solid red;
+  border-radius: 8px;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background: red;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.log {
+  background: black;
+  padding: 10px;
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid red;
+  margin-top: 10px;
+  border-radius: 10px;
+}
 </style>
 </head>
+
 <body>
 
-<h2>🔥 WA TXT Sender 🔥</h2>
+<div class="container">
+  <h2>🔥 HP Kentang VIP 🔥</h2>
 
-<input id="targets" placeholder="628xxx@s.whatsapp.net,628xxx@s.whatsapp.net">
-<input id="url" placeholder="https://raw.githubusercontent.com/.../auahh.txt">
+  <input id="targets" placeholder="628xxx@s.whatsapp.net,628xxx@s.whatsapp.net">
 
-<button onclick="send()">KIRIM</button>
+  <input id="url" value="https://raw.githubusercontent.com/jiwhwhnbagwhvev-sys/Spammwa-VIP/main/auahh.txt">
+
+  <button onclick="send()">🚀 START</button>
+
+  <div class="log" id="log"></div>
+</div>
 
 <script>
+function log(t){
+  const el = document.getElementById("log");
+  el.innerHTML += t + "<br>";
+  el.scrollTop = el.scrollHeight;
+}
+
 async function send(){
   const targets = document.getElementById("targets").value.split(",");
   const url = document.getElementById("url").value;
 
-  await fetch("http://localhost:3000/send", {
+  log("⏳ Kirim dimulai...");
+
+  await fetch("/send", {
     method:"POST",
     headers:{ "Content-Type":"application/json" },
     body: JSON.stringify({ targets, url })
   });
 
-  alert("Selesai");
+  log("✅ Selesai kirim");
 }
 </script>
 
